@@ -6,49 +6,136 @@
 <title>Micaela Rivera – Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#0a0a0a;--ink:#f4f2ee;--muted:#bfbab0;--line:#262626}
-  *{box-sizing:border-box}html,body{margin:0}
-  body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
-  .container{max-width:1200px;margin:0 auto;padding:0 24px}
+  /* ---- Plum-inspired palette ---- */
+  :root{
+    --bg:#140912;          /* deep plum */
+    --bg2:#1b0d18;         /* vignette blend */
+    --plum:#2a0f24;        /* cards */
+    --plum-ink:#e9e3ee;    /* primary text */
+    --muted:#c8b9c9;       /* secondary text */
+    --line:#3b2535;        /* borders */
+    --rose:#d9a5c7;        /* accent */
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    color:var(--plum-ink);
+    background:
+      radial-gradient(1000px 600px at 80% -10%, rgba(217,165,199,.14), transparent 60%),
+      radial-gradient(800px 500px at 10% 110%, rgba(88,48,76,.18), transparent 60%),
+      linear-gradient(180deg,var(--bg),var(--bg2) 55%, #120810);
+    min-height:100svh;
+  }
+  a{color:inherit}
+
+  .container{max-width:1180px;margin:0 auto;padding:0 24px}
   .cap{letter-spacing:.18em;text-transform:uppercase}
-  .title{min-height:60svh;display:grid;place-items:center;text-align:center}
-  .title h1{font-weight:900;font-size:clamp(2.2rem,8vw,5rem);margin:0;letter-spacing:-.02em}
-  .title p{color:var(--muted);margin:.6rem 0 0}
 
-  /* LOOKBOOK */
-  .panel{width:100%;min-height:90svh;display:grid;grid-template-columns:1.1fr .9fr;
-    gap:min(4vw,28px);align-items:center;padding:clamp(18px,6vw,60px)}
-  .card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#121212;
-    box-shadow:0 18px 40px rgba(0,0,0,.4);display:grid;place-items:center}
-  .card .wrap{position:relative;width:100%;height:100%;display:grid;place-items:center;min-height:60svh}
-  .card img{max-width:100%;max-height:76vh;object-fit:contain;display:block}
+  /* Header + About */
+  header{padding:clamp(36px,6vw,72px) 0 clamp(18px,3.5vw,36px)}
+  .title{display:grid;gap:8px;text-align:center}
+  .title h1{font-weight:900;font-size:clamp(2.2rem,8vw,4.4rem);margin:0;letter-spacing:-.02em}
+  .title p{color:var(--muted);margin:.25rem 0 0}
+  .about{
+    margin:clamp(16px,3.5vw,28px) auto 0;
+    max-width:70ch;
+    background:linear-gradient(180deg,rgba(58,18,51,.5),rgba(41,15,36,.45));
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:clamp(14px,2.8vw,22px) clamp(16px,3vw,26px);
+    box-shadow:0 18px 50px rgba(0,0,0,.45);
+    text-align:center;
+  }
+  .about strong{color:var(--rose)}
+
+  /* Decorative divider */
+  .divider{height:26px;margin:22px auto 0;opacity:.6}
+  .divider svg{display:block;width:180px;margin:0 auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35))}
+  .divider path{stroke:#553047}
+
+  /* Panels (lookbook) */
+  section{padding:clamp(32px,5.6vw,64px) 0}
+  .panel{
+    width:100%;
+    min-height:64svh; /* less tall -> better use of space */
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:min(4vw,28px);
+    align-items:center;
+    padding:0 clamp(10px,2vw,16px);
+  }
+  .card{
+    border:1px solid var(--line);
+    border-radius:18px;
+    overflow:hidden;
+    background:linear-gradient(180deg,rgba(58,18,51,.55),rgba(18,8,16,.6));
+    box-shadow:0 18px 40px rgba(0,0,0,.5);
+    display:grid;place-items:center
+  }
+  .card .wrap{position:relative;width:100%;height:100%;min-height:54svh;display:grid;place-items:center;padding:clamp(12px,2.2vw,18px)}
+  .card img{max-width:100%;max-height:64vh;object-fit:contain;display:block;filter:drop-shadow(0 12px 22px rgba(0,0,0,.55))}
   .blurb{align-self:stretch;display:grid;place-items:center}
-  .blurb .inner{max-width:40ch}
-  .blurb h2{margin:0 0 .2rem 0;font-weight:800}
+  .blurb .inner{
+    max-width:40ch;
+    background:linear-gradient(180deg,rgba(32,14,29,.65),rgba(32,14,29,.35));
+    border:1px dashed #523046;
+    border-radius:14px;
+    padding:clamp(14px,2.4vw,20px);
+  }
+  .blurb h2{margin:0 0 .25rem 0;font-weight:800;letter-spacing:.01em}
   .blurb p{color:var(--muted);margin:0}
-  .tag{display:inline-block;margin-top:1rem;padding:.35rem .6rem;border:1px solid var(--line);border-radius:999px;color:#c8c3ba}
+  .tag{
+    display:inline-block;margin-top:1rem;padding:.35rem .6rem;
+    border:1px solid var(--line);border-radius:999px;color:#e7d6e6;background:rgba(217,165,199,.08)
+  }
 
-  /* GALLERY GRID */
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 24px 60px}
-  .tile{border:1px solid var(--line);border-radius:14px;background:#121212;display:grid;place-items:center;padding:18px}
-  .tile img{max-width:100%;max-height:60vh;object-fit:contain}
+  /* Gallery grid */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    padding:0 24px 60px;
+  }
+  .tile{
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:linear-gradient(180deg,rgba(58,18,51,.5),rgba(16,8,14,.5));
+    display:grid;place-items:center;
+    padding:clamp(12px,2vw,18px);
+    box-shadow:0 14px 32px rgba(0,0,0,.45)
+  }
+  .tile img{max-width:100%;max-height:58vh;object-fit:contain;filter:drop-shadow(0 10px 20px rgba(0,0,0,.55))}
+  .section-label{text-align:center;margin:0 0 10px;color:var(--muted)}
 
+  /* Responsive */
   @media (max-width:960px){.panel{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}
   @media (max-width:640px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<header class="title container">
-  <div>
+<header class="container">
+  <div class="title">
     <h1>Micaela Rivera</h1>
-    <p class="cap">Image-first lookbook</p>
+    <p class="cap">Illustrator • Seamstress • Garment Design</p>
+  </div>
+
+  <!-- About Me (3 sentences, from your resume) -->
+  <div class="about">
+    I’m a fashion-focused creative studying Textiles at The University of Texas at Austin (’27), blending <strong>illustration</strong>, <strong>tailoring</strong>, and <strong>garment construction</strong> into storytelling pieces.  
+    Experience ranges from freelance commissions and customer-facing work to being HMUA with University Fashion Group and coordinating community events.  
+    Fluent in Spanish and comfortable across Adobe tools, I bring a service-minded, detail-driven approach that keeps projects on time and beautifully finished.
+  </div>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 180 26" fill="none"><path d="M2 13 C30 1, 60 1, 90 13 S150 25, 178 13" stroke-width="2.2" /></svg>
   </div>
 </header>
 
 <main>
 
-  <!-- LOOKBOOK (no runway) -->
+  <!-- LOOKBOOK (runway removed) -->
   <section>
     <div class="panel container">
       <div class="card">
@@ -59,7 +146,7 @@
       <div class="blurb">
         <div class="inner">
           <h2>Creative Pants</h2>
-          <p>Heart-stitch motif and clean construction; presented on transparent cutout to focus on silhouette and seaming.</p>
+          <p>Heart-stitch motifs and clean construction; presented on a transparent cutout to emphasize silhouette, seaming, and pocket detail.</p>
           <span class="tag cap">fit & detail</span>
         </div>
       </div>
@@ -69,7 +156,7 @@
       <div class="blurb">
         <div class="inner">
           <h2>Technical Illustration</h2>
-          <p>Line drawing used as an editorial element and as a print reference; background removed for crisp overlay on any stage.</p>
+          <p>Crisp line work used as build documentation and as an editorial graphic. Background removed for sharp overlay on any layout.</p>
           <span class="tag cap">pattern logic</span>
         </div>
       </div>
@@ -89,18 +176,16 @@
       <div class="blurb">
         <div class="inner">
           <h2>Corseted Skirt</h2>
-          <p>Gathered hem and corseted waist; shown as a clean asset for comps, mood boards, or look sheets.</p>
+          <p>Ruching and a cinched waist create sculptural volume; shown as a clean asset ready for look sheets or mood boards.</p>
           <span class="tag cap">texture & volume</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SIMPLE GRID -->
-  <section>
-    <div class="container" style="text-align:center;padding:8px 24px 18px">
-      <h3 class="cap" style="color:var(--muted);margin:0">Gallery</h3>
-    </div>
+  <!-- GALLERY -->
+  <section class="container">
+    <h3 class="section-label cap">Gallery</h3>
     <div class="grid">
       <figure class="tile"><img src="images/thumbnail_IMG_8421_cutout.png" alt=""></figure>
       <figure class="tile"><img src="images/thumbnail_IMG_8422_cutout.png" alt=""></figure>
