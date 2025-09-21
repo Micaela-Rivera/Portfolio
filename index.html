@@ -3,298 +3,111 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Micaela Rivera – Lookbook</title>
+<title>Micaela Rivera – Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0a0a0a; --ink:#f4f2ee; --muted:#bfbab0; --line:#262626; --accent:#ffb3c1;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0}
+  :root{--bg:#0a0a0a;--ink:#f4f2ee;--muted:#bfbab0;--line:#262626}
+  *{box-sizing:border-box}html,body{margin:0}
   body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
-  a{color:inherit}
-  .cap{letter-spacing:.18em;text-transform:uppercase}
   .container{max-width:1200px;margin:0 auto;padding:0 24px}
-
-  /* Global vibe */
-  .spotlight{
-    position:fixed; inset:0; pointer-events:none;
-    background:
-      radial-gradient(1200px 500px at 65% -10%, rgba(255,255,255,.08), transparent 65%),
-      radial-gradient(900px 400px at 10% 120%, rgba(255,179,193,.08), transparent 60%);
-    mix-blend-mode:screen; z-index:0;
-  }
-
-  /* Snap-scrolling sections */
-  .snapwrap{scroll-snap-type:y mandatory;height:100svh;overflow-y:auto}
-  section{min-height:100svh;display:grid;place-items:center;position:relative;scroll-snap-align:start}
-
-  /* Title */
-  .title{text-align:center}
+  .cap{letter-spacing:.18em;text-transform:uppercase}
+  .title{min-height:60svh;display:grid;place-items:center;text-align:center}
   .title h1{font-weight:900;font-size:clamp(2.2rem,8vw,5rem);margin:0;letter-spacing:-.02em}
   .title p{color:var(--muted);margin:.6rem 0 0}
 
-  /* RUNWAY — virtual models with mapped garments */
-  .runway{isolation:isolate}
-  .stage{
-    width:min(1100px,92vw);height:min(620px,80vh);
-    border:1px solid var(--line);border-radius:24px;position:relative;overflow:hidden;
-    background:
-      linear-gradient(180deg,#101010 0%,#0b0b0b 60%),
-      url('images/thumbnail_IMG_8422.jpg') center/cover no-repeat;
-    box-shadow:0 40px 120px rgba(0,0,0,.55) inset;
-  }
-  .track{position:absolute;inset:auto 0 0 0;height:36%;background:linear-gradient(#0d0d0d,#050505)}
-  .models{
-    position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-evenly;padding:2rem;
-  }
-  .model{width:min(280px,28vw);aspect-ratio:3/7; position:relative; filter:drop-shadow(0 16px 30px rgba(0,0,0,.5))}
-  .nameplate{
-    position:absolute;left:50%;bottom:8px;transform:translateX(-50%);
-    font-size:.75rem;color:#cfcac1;background:rgba(20,20,20,.6);backdrop-filter:blur(3px);
-    border:1px solid var(--line);padding:.35rem .6rem;border-radius:999px
-  }
-
-  /* Walk animation */
-  @keyframes walk {
-    0%{transform:translateY(0)}
-    50%{transform:translateY(-3px)}
-    100%{transform:translateY(0)}
-  }
-  .model svg{width:100%;height:100%;display:block;animation:walk 2.4s ease-in-out infinite}
-  .model:nth-child(2) svg{animation-delay:.3s}
-  .model:nth-child(3) svg{animation-delay:.6s}
-
-  /* LOOKBOOK — full bleed alternating panels */
-  .panel{
-    width:100%;min-height:100svh;display:grid;grid-template-columns:1fr 1fr;
-    gap:min(4vw,28px);align-items:center;padding:clamp(18px,6vw,60px)
-  }
-  .card{
-    border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#121212;
-    box-shadow:0 18px 40px rgba(0,0,0,.4)
-  }
-  .card img{display:block;width:100%;height:100%;object-fit:cover}
+  /* LOOKBOOK */
+  .panel{width:100%;min-height:90svh;display:grid;grid-template-columns:1.1fr .9fr;
+    gap:min(4vw,28px);align-items:center;padding:clamp(18px,6vw,60px)}
+  .card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#121212;
+    box-shadow:0 18px 40px rgba(0,0,0,.4);display:grid;place-items:center}
+  .card .wrap{position:relative;width:100%;height:100%;display:grid;place-items:center;min-height:60svh}
+  .card img{max-width:100%;max-height:76vh;object-fit:contain;display:block}
   .blurb{align-self:stretch;display:grid;place-items:center}
-  .blurb .inner{max-width:36ch}
+  .blurb .inner{max-width:40ch}
   .blurb h2{margin:0 0 .2rem 0;font-weight:800}
   .blurb p{color:var(--muted);margin:0}
   .tag{display:inline-block;margin-top:1rem;padding:.35rem .6rem;border:1px solid var(--line);border-radius:999px;color:#c8c3ba}
 
-  /* GRID — masonry-like with CSS columns for pure-HTML simplicity */
-  .masonry{columns:3 280px;column-gap:16px;width:100%;padding:0 16px 50px}
-  .tile{break-inside:avoid;margin:0 0 16px;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#121212}
-  .tile img{width:100%;display:block}
+  /* GALLERY GRID */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 24px 60px}
+  .tile{border:1px solid var(--line);border-radius:14px;background:#121212;display:grid;place-items:center;padding:18px}
+  .tile img{max-width:100%;max-height:60vh;object-fit:contain}
 
-  /* Top nav (minimal) */
-  .mini{
-    position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:5;
-    display:flex;gap:.6rem;background:rgba(15,15,15,.5);backdrop-filter:blur(8px);
-    border:1px solid var(--line);padding:.35rem .6rem;border-radius:999px;font-size:.8rem;color:#d9d4cb
-  }
-  .mini a{opacity:.85;text-decoration:none;border-bottom:1px dotted transparent}
-  .mini a:hover{opacity:1;border-bottom-color:#d9d4cb}
-
-  @media (max-width:800px){
-    .panel{grid-template-columns:1fr}
-  }
+  @media (max-width:960px){.panel{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:640px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div class="spotlight"></div>
-<nav class="mini cap">
-  <a href="#runway">Runway</a>
-  <a href="#lookbook">Lookbook</a>
-  <a href="#grid">Grid</a>
-</nav>
 
-<div class="snapwrap">
+<header class="title container">
+  <div>
+    <h1>Micaela Rivera</h1>
+    <p class="cap">Image-first lookbook</p>
+  </div>
+</header>
 
-  <!-- TITLE -->
+<main>
+
+  <!-- LOOKBOOK (no runway) -->
   <section>
-    <div class="title container" aria-label="Intro">
-      <h1>Micaela Rivera</h1>
-      <p class="cap">Illustrator · Seamstress · Garment Design</p>
-    </div>
-  </section>
-
-  <!-- RUNWAY: images mapped to garment shapes on “models” -->
-  <section id="runway" class="runway">
-    <div class="stage">
-      <div class="models">
-
-        <!-- MODEL 1: Creative Pants -->
-        <figure class="model">
-          <svg viewBox="0 0 300 700" role="img" aria-label="Creative pants on model">
-            <!-- Silhouette body -->
-            <defs>
-              <!-- Pants shape (loose fit) -->
-              <clipPath id="clip-pants">
-                <path d="M95 210
-                         C105 210, 195 210, 205 210
-                         L225 470
-                         C210 560, 210 650, 210 690
-                         L165 690
-                         L160 480
-                         L140 480
-                         L135 690
-                         L90 690
-                         C90 610, 86 545, 75 470
-                         Z"/>
-              </clipPath>
-              <radialGradient id="skin" cx="50%" cy="20%" r="70%">
-                <stop offset="0%" stop-color="#d5cabe"/>
-                <stop offset="100%" stop-color="#b8aa9b"/>
-              </radialGradient>
-              <linearGradient id="shadow" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="rgba(0,0,0,0.25)"/>
-                <stop offset="1" stop-color="rgba(0,0,0,0.6)"/>
-              </linearGradient>
-              <pattern id="pants-img" patternUnits="objectBoundingBox" width="1" height="1">
-                <image href="images/thumbnail_IMG_8421.jpg" width="300" height="700" preserveAspectRatio="xMidYMid slice"/>
-              </pattern>
-            </defs>
-            <!-- Head + torso -->
-            <circle cx="150" cy="95" r="45" fill="url(#skin)"/>
-            <rect x="110" y="140" width="80" height="80" rx="20" fill="url(#skin)"/>
-            <!-- Garment mapped -->
-            <g clip-path="url(#clip-pants)">
-              <rect x="60" y="200" width="180" height="520" fill="url(#pants-img)"/>
-              <!-- soft overlay to blend edges -->
-              <rect x="60" y="200" width="180" height="520" fill="rgba(0,0,0,.25)"/>
-            </g>
-            <!-- Simple shoes -->
-            <ellipse cx="110" cy="690" rx="26" ry="8" fill="#1b1b1b"/>
-            <ellipse cx="195" cy="690" rx="26" ry="8" fill="#1b1b1b"/>
-          </svg>
-          <figcaption class="nameplate cap">Creative Pants</figcaption>
-        </figure>
-
-        <!-- MODEL 2: Line-art as statement top/dress -->
-        <figure class="model">
-          <svg viewBox="0 0 300 700" role="img" aria-label="Line art dress on model">
-            <defs>
-              <clipPath id="clip-dress">
-                <path d="M100 180
-                         C90 260, 70 360, 85 470
-                         C95 560, 115 630, 130 680
-                         L170 680
-                         C190 610, 205 540, 215 460
-                         C230 340, 210 240, 200 180
-                         Z"/>
-              </clipPath>
-              <pattern id="lineart-img" patternUnits="objectBoundingBox" width="1" height="1">
-                <image href="images/thumbnail_IMG_8422.jpg" width="400" height="700" preserveAspectRatio="xMidYMid slice"/>
-              </pattern>
-            </defs>
-            <circle cx="150" cy="95" r="45" fill="#e9e6e1"/>
-            <rect x="110" y="140" width="80" height="60" rx="20" fill="#e9e6e1"/>
-            <g clip-path="url(#clip-dress)">
-              <rect x="70" y="170" width="160" height="520" fill="url(#lineart-img)"/>
-              <rect x="70" y="170" width="160" height="520" fill="rgba(0,0,0,.18)"/>
-            </g>
-            <ellipse cx="140" cy="680" rx="24" ry="8" fill="#1b1b1b"/>
-            <ellipse cx="180" cy="680" rx="24" ry="8" fill="#1b1b1b"/>
-          </svg>
-          <figcaption class="nameplate cap">Tech-Art Dress</figcaption>
-        </figure>
-
-        <!-- MODEL 3: Creative Skirt -->
-        <figure class="model">
-          <svg viewBox="0 0 300 700" role="img" aria-label="Creative skirt on model">
-            <defs>
-              <clipPath id="clip-skirt">
-                <path d="M95 350
-                         C120 340, 180 340, 205 350
-                         C230 380, 235 430, 230 480
-                         C215 560, 85 560, 70 480
-                         C65 430, 70 380, 95 350 Z"/>
-              </clipPath>
-              <pattern id="skirt-img" patternUnits="objectBoundingBox" width="1" height="1">
-                <image href="images/thumbnail_IMG_8423.jpg" width="300" height="400" preserveAspectRatio="xMidYMid slice"/>
-              </pattern>
-            </defs>
-            <circle cx="150" cy="95" r="45" fill="#eadfda"/>
-            <rect x="112" y="140" width="76" height="170" rx="26" fill="#eadfda"/>
-            <!-- Skirt -->
-            <g clip-path="url(#clip-skirt)">
-              <rect x="60" y="330" width="180" height="260" fill="url(#skirt-img)"/>
-              <rect x="60" y="330" width="180" height="260" fill="rgba(0,0,0,.22)"/>
-            </g>
-            <ellipse cx="130" cy="560" rx="20" ry="7" fill="#1b1b1b"/>
-            <ellipse cx="190" cy="560" rx="20" ry="7" fill="#1b1b1b"/>
-          </svg>
-          <figcaption class="nameplate cap">Corseted Skirt</figcaption>
-        </figure>
-      </div>
-
-      <div class="track"></div>
-    </div>
-  </section>
-
-  <!-- LOOKBOOK: immersive, image-first panels -->
-  <section id="lookbook">
     <div class="panel container">
       <div class="card">
-        <img src="images/thumbnail_IMG_8421.jpg" alt="Creative pants – front and back">
+        <div class="wrap">
+          <img src="images/thumbnail_IMG_8421_cutout.png" alt="Creative pants – cutout">
+        </div>
       </div>
       <div class="blurb">
         <div class="inner">
           <h2>Creative Pants</h2>
-          <p>Playful heart-stitch motifs and functional construction. Hover in the grid below to swap front/back views.</p>
-          <span class="tag cap">detail & finish</span>
+          <p>Heart-stitch motif and clean construction; presented on transparent cutout to focus on silhouette and seaming.</p>
+          <span class="tag cap">fit & detail</span>
         </div>
       </div>
     </div>
+
     <div class="panel container">
       <div class="blurb">
         <div class="inner">
-          <h2>Tech Illustration</h2>
-          <p>Line work that guides construction. Shown here as a statement print to emphasize silhouette logic.</p>
+          <h2>Technical Illustration</h2>
+          <p>Line drawing used as an editorial element and as a print reference; background removed for crisp overlay on any stage.</p>
           <span class="tag cap">pattern logic</span>
         </div>
       </div>
       <div class="card">
-        <img src="images/thumbnail_IMG_8422.jpg" alt="Line drawing – pants technical">
+        <div class="wrap">
+          <img src="images/thumbnail_IMG_8422_cutout.png" alt="Line drawing – cutout">
+        </div>
       </div>
     </div>
+
     <div class="panel container">
       <div class="card">
-        <img src="images/thumbnail_IMG_8423.jpg" alt="Creative skirt on dress form">
+        <div class="wrap">
+          <img src="images/thumbnail_IMG_8423_cutout.png" alt="Creative skirt – cutout">
+        </div>
       </div>
       <div class="blurb">
         <div class="inner">
           <h2>Corseted Skirt</h2>
-          <p>Volume, ruching, and proportion on a clean base. Seen on form; mapped on model above for motion.</p>
+          <p>Gathered hem and corseted waist; shown as a clean asset for comps, mood boards, or look sheets.</p>
           <span class="tag cap">texture & volume</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GRID: fast browsing; pants tile swaps on hover -->
-  <section id="grid">
-    <div class="container" style="text-align:center;padding:24px 24px 8px">
+  <!-- SIMPLE GRID -->
+  <section>
+    <div class="container" style="text-align:center;padding:8px 24px 18px">
       <h3 class="cap" style="color:var(--muted);margin:0">Gallery</h3>
     </div>
-    <div class="masonry">
-      <!-- Pants flip: use same image as a sprite with background-position trick -->
-      <figure class="tile">
-        <img src="images/thumbnail_IMG_8421.jpg" alt="Creative pants">
-      </figure>
-      <figure class="tile">
-        <img src="images/thumbnail_IMG_8422.jpg" alt="Tech drawing">
-      </figure>
-      <figure class="tile">
-        <img src="images/thumbnail_IMG_8423.jpg" alt="Skirt on dress form">
-      </figure>
-      <!-- duplicates for rhythm; feel free to prune -->
-      <figure class="tile"><img src="images/thumbnail_IMG_8421.jpg" alt=""></figure>
-      <figure class="tile"><img src="images/thumbnail_IMG_8423.jpg" alt=""></figure>
-      <figure class="tile"><img src="images/thumbnail_IMG_8422.jpg" alt=""></figure>
+    <div class="grid">
+      <figure class="tile"><img src="images/thumbnail_IMG_8421_cutout.png" alt=""></figure>
+      <figure class="tile"><img src="images/thumbnail_IMG_8422_cutout.png" alt=""></figure>
+      <figure class="tile"><img src="images/thumbnail_IMG_8423_cutout.png" alt=""></figure>
     </div>
   </section>
 
-</div>
+</main>
 </body>
 </html>
