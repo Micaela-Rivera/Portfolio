@@ -6,136 +6,170 @@
 <title>Micaela Rivera – Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
-  /* ---- Plum-inspired palette ---- */
+  /* --- Lighter plum palette --- */
   :root{
-    --bg:#140912;          /* deep plum */
-    --bg2:#1b0d18;         /* vignette blend */
-    --plum:#2a0f24;        /* cards */
-    --plum-ink:#e9e3ee;    /* primary text */
-    --muted:#c8b9c9;       /* secondary text */
-    --line:#3b2535;        /* borders */
-    --rose:#d9a5c7;        /* accent */
+    --bg:#1b1020;         /* lighter, richer plum */
+    --bg2:#231229;        /* vignette blend */
+    --plum:#2f1736;       /* cards */
+    --ink:#efe8f2;        /* primary text */
+    --muted:#d3c4d8;      /* secondary text */
+    --line:#4b2f55;       /* borders */
+    --accent:#e4a9cf;     /* rose accent */
   }
+
   *{box-sizing:border-box}
   html,body{margin:0}
+  html{scroll-behavior:smooth}
   body{
     font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
-    color:var(--plum-ink);
+    color:var(--ink);
     background:
-      radial-gradient(1000px 600px at 80% -10%, rgba(217,165,199,.14), transparent 60%),
-      radial-gradient(800px 500px at 10% 110%, rgba(88,48,76,.18), transparent 60%),
-      linear-gradient(180deg,var(--bg),var(--bg2) 55%, #120810);
+      radial-gradient(900px 520px at 80% -10%, rgba(228,169,207,.18), transparent 60%),
+      radial-gradient(800px 500px at 10% 110%, rgba(122,74,136,.20), transparent 60%),
+      linear-gradient(180deg,var(--bg),var(--bg2) 55%, #1a0e1f);
     min-height:100svh;
   }
-  a{color:inherit}
 
+  a{color:inherit;text-decoration:none}
   .container{max-width:1180px;margin:0 auto;padding:0 24px}
   .cap{letter-spacing:.18em;text-transform:uppercase}
 
-  /* Header + About */
-  header{padding:clamp(36px,6vw,72px) 0 clamp(18px,3.5vw,36px)}
-  .title{display:grid;gap:8px;text-align:center}
-  .title h1{font-weight:900;font-size:clamp(2.2rem,8vw,4.4rem);margin:0;letter-spacing:-.02em}
-  .title p{color:var(--muted);margin:.25rem 0 0}
-  .about{
-    margin:clamp(16px,3.5vw,28px) auto 0;
-    max-width:70ch;
-    background:linear-gradient(180deg,rgba(58,18,51,.5),rgba(41,15,36,.45));
-    border:1px solid var(--line);
-    border-radius:18px;
-    padding:clamp(14px,2.8vw,22px) clamp(16px,3vw,26px);
-    box-shadow:0 18px 50px rgba(0,0,0,.45);
-    text-align:center;
+  /* Header */
+  header{padding:clamp(28px,5vw,60px) 0 0}
+  .topbar{
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:0 0 clamp(16px,2.5vw,24px);
   }
-  .about strong{color:var(--rose)}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand h1{font-weight:900;font-size:clamp(1.4rem,3.4vw,2.2rem);margin:0;letter-spacing:-.01em}
+  .cta{display:flex;gap:10px}
+  .btn{
+    display:inline-block;padding:.6rem .9rem;border-radius:999px;font-weight:700;
+    border:1px solid var(--line);background:rgba(250,250,250,.06)
+  }
+  .btn:hover{background:rgba(250,250,250,.12)}
+  .btn--accent{border-color:transparent;background:linear-gradient(180deg,var(--accent),#cf8cb9);color:#2b122e}
+  .btn--accent:hover{filter:brightness(1.02)}
+
+  /* Portrait + About block */
+  .intro{
+    display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;
+    padding:0 0 clamp(18px,3.6vw,28px);
+  }
+  .portrait{
+    width:min(180px,22vw);aspect-ratio:4/5;display:grid;place-items:center;
+    border-radius:50%/58%;
+    border:2px solid var(--line);
+    background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));
+    box-shadow:0 16px 40px rgba(0,0,0,.45);
+    overflow:hidden;
+  }
+  .portrait img{width:100%;height:100%;object-fit:cover;display:block}
+  .about{
+    background:linear-gradient(180deg,rgba(79,43,88,.35),rgba(41,22,48,.35));
+    border:1px solid var(--line);
+    border-radius:16px;padding:clamp(12px,2.4vw,18px) clamp(14px,2.8vw,22px);
+    box-shadow:0 14px 36px rgba(0,0,0,.45)
+  }
+  .about p{margin:.25rem 0;color:var(--muted)}
 
   /* Decorative divider */
-  .divider{height:26px;margin:22px auto 0;opacity:.6}
-  .divider svg{display:block;width:180px;margin:0 auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35))}
-  .divider path{stroke:#553047}
+  .divider{height:26px;margin:16px auto 0;opacity:.7}
+  .divider svg{display:block;width:160px;margin:0 auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35))}
+  .divider path{stroke:#6d4679}
 
-  /* Panels (lookbook) */
-  section{padding:clamp(32px,5.6vw,64px) 0}
+  /* Panels (Lookbook) */
+  section{padding:clamp(26px,5vw,56px) 0}
   .panel{
     width:100%;
-    min-height:64svh; /* less tall -> better use of space */
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:min(4vw,28px);
-    align-items:center;
-    padding:0 clamp(10px,2vw,16px);
+    min-height:60svh;
+    display:grid;grid-template-columns:1.1fr .9fr;gap:min(4vw,28px);
+    align-items:center;padding:0 clamp(8px,2vw,16px);
   }
   .card{
-    border:1px solid var(--line);
-    border-radius:18px;
-    overflow:hidden;
-    background:linear-gradient(180deg,rgba(58,18,51,.55),rgba(18,8,16,.6));
+    border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    background:linear-gradient(180deg,rgba(96,55,108,.45),rgba(31,17,36,.55));
     box-shadow:0 18px 40px rgba(0,0,0,.5);
     display:grid;place-items:center
   }
-  .card .wrap{position:relative;width:100%;height:100%;min-height:54svh;display:grid;place-items:center;padding:clamp(12px,2.2vw,18px)}
+  .card .wrap{position:relative;width:100%;height:100%;min-height:52svh;display:grid;place-items:center;padding:clamp(12px,2.2vw,18px)}
   .card img{max-width:100%;max-height:64vh;object-fit:contain;display:block;filter:drop-shadow(0 12px 22px rgba(0,0,0,.55))}
   .blurb{align-self:stretch;display:grid;place-items:center}
   .blurb .inner{
     max-width:40ch;
-    background:linear-gradient(180deg,rgba(32,14,29,.65),rgba(32,14,29,.35));
-    border:1px dashed #523046;
-    border-radius:14px;
-    padding:clamp(14px,2.4vw,20px);
+    background:linear-gradient(180deg,rgba(54,29,61,.55),rgba(40,22,47,.35));
+    border:1px dashed #6a4477;border-radius:14px;padding:clamp(14px,2.4vw,20px);
   }
   .blurb h2{margin:0 0 .25rem 0;font-weight:800;letter-spacing:.01em}
   .blurb p{color:var(--muted);margin:0}
-  .tag{
-    display:inline-block;margin-top:1rem;padding:.35rem .6rem;
-    border:1px solid var(--line);border-radius:999px;color:#e7d6e6;background:rgba(217,165,199,.08)
-  }
+  .tag{display:inline-block;margin-top:1rem;padding:.35rem .6rem;border:1px solid var(--line);border-radius:999px;color:#2b122e;background:linear-gradient(180deg,var(--accent),#cf8cb9)}
 
   /* Gallery grid */
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
-    padding:0 24px 60px;
-  }
-  .tile{
-    border:1px solid var(--line);
-    border-radius:14px;
-    background:linear-gradient(180deg,rgba(58,18,51,.5),rgba(16,8,14,.5));
-    display:grid;place-items:center;
-    padding:clamp(12px,2vw,18px);
-    box-shadow:0 14px 32px rgba(0,0,0,.45)
-  }
-  .tile img{max-width:100%;max-height:58vh;object-fit:contain;filter:drop-shadow(0 10px 20px rgba(0,0,0,.55))}
   .section-label{text-align:center;margin:0 0 10px;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 24px 48px}
+  .tile{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,rgba(98,61,110,.35),rgba(28,16,33,.5));display:grid;place-items:center;padding:clamp(12px,2vw,18px);box-shadow:0 14px 32px rgba(0,0,0,.45)}
+  .tile img{max-width:100%;max-height:58vh;object-fit:contain;filter:drop-shadow(0 10px 20px rgba(0,0,0,.55))}
+
+  /* Contact section */
+  #contact .card{
+    background:linear-gradient(180deg,rgba(240,233,245,.06),rgba(240,233,245,.03));
+  }
+  .contactwrap{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:center}
+  .contactbox{
+    background:linear-gradient(180deg,rgba(54,29,61,.45),rgba(39,22,46,.35));
+    border:1px solid var(--line);border-radius:16px;padding:18px 20px;
+  }
+  .contactbox p{margin:.3rem 0;color:var(--muted)}
+  .contactlinks{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .btn--ghost{background:transparent;border-color:var(--line)}
+  .btn--ghost:hover{background:rgba(250,250,250,.06)}
 
   /* Responsive */
-  @media (max-width:960px){.panel{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}
-  @media (max-width:640px){.grid{grid-template-columns:1fr}}
+  @media (max-width:960px){
+    .intro{grid-template-columns:1fr}
+    .panel{grid-template-columns:1fr}
+    .grid{grid-template-columns:1fr 1fr}
+    .contactwrap{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+    .grid{grid-template-columns:1fr}
+  }
 </style>
 </head>
 <body>
 
 <header class="container">
-  <div class="title">
-    <h1>Micaela Rivera</h1>
-    <p class="cap">Illustrator • Seamstress • Garment Design</p>
+  <!-- Top bar with Contact button -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="portrait" aria-label="Portrait">
+        <!-- Replace this src with your oval PNG once added -->
+        <img src="images/portrait_oval.png" alt="Portrait of Micaela Rivera">
+      </div>
+      <h1>Micaela Rivera</h1>
+    </div>
+    <div class="cta">
+      <a class="btn btn--accent" href="#contact">Contact Me</a>
+    </div>
   </div>
 
-  <!-- About Me (3 sentences, from your resume) -->
-  <div class="about">
-    I’m a fashion-focused creative studying Textiles at The University of Texas at Austin (’27), blending <strong>illustration</strong>, <strong>tailoring</strong>, and <strong>garment construction</strong> into storytelling pieces.  
-    Experience ranges from freelance commissions and customer-facing work to being HMUA with University Fashion Group and coordinating community events.  
-    Fluent in Spanish and comfortable across Adobe tools, I bring a service-minded, detail-driven approach that keeps projects on time and beautifully finished.
+  <!-- About (3 sentences) -->
+  <div class="intro">
+    <div class="about">
+      <p>I’m a fashion-focused creative studying Textiles at The University of Texas at Austin (’27), blending <strong>illustration</strong>, <strong>tailoring</strong>, and <strong>garment construction</strong> into storytelling pieces.</p>
+      <p>Experience spans freelance commissions, customer-facing roles, HMUA with University Fashion Group, and coordinating community events.</p>
+      <p>Fluent in Spanish and comfortable across Adobe tools, I bring a detail-driven, on-time way of working that makes concepts feel finished and wearable.</p>
+    </div>
   </div>
 
   <div class="divider" aria-hidden="true">
-    <svg viewBox="0 0 180 26" fill="none"><path d="M2 13 C30 1, 60 1, 90 13 S150 25, 178 13" stroke-width="2.2" /></svg>
+    <svg viewBox="0 0 160 26" fill="none"><path d="M2 13 C30 1, 60 1, 80 13 S130 25, 158 13" stroke-width="2.2" /></svg>
   </div>
 </header>
 
 <main>
 
-  <!-- LOOKBOOK (runway removed) -->
+  <!-- LOOKBOOK -->
   <section>
     <div class="panel container">
       <div class="card">
@@ -190,6 +224,29 @@
       <figure class="tile"><img src="images/thumbnail_IMG_8421_cutout.png" alt=""></figure>
       <figure class="tile"><img src="images/thumbnail_IMG_8422_cutout.png" alt=""></figure>
       <figure class="tile"><img src="images/thumbnail_IMG_8423_cutout.png" alt=""></figure>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="container">
+    <h3 class="section-label cap">Contact</h3>
+    <div class="contactwrap">
+      <div class="contactbox">
+        <h2 style="margin:0 0 .4rem 0">Let’s create something</h2>
+        <p>For commissions, collaborations, or internships, reach out and share a few details about your project, timeline, and budget.</p>
+        <div class="contactlinks">
+          <a class="btn btn--accent" href="mailto:mr64296@my.utexas.edu?subject=Portfolio%20Inquiry%20(Micaela%20Rivera)&body=Hi%20Micaela,%0A%0AProject:%0ATimeline:%0ABudget:%0A%0AThanks!">Email Me</a>
+          <a class="btn btn--ghost" href="tel:+18329984930">Call</a>
+          <a class="btn btn--ghost" href="https://linkedin.com/in/micarivera-" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="wrap">
+          <!-- Reuse a hero piece next to contact for visual balance -->
+          <img src="images/thumbnail_IMG_8421_cutout.png" alt="Creative pants highlight">
+        </div>
+      </div>
     </div>
   </section>
 
