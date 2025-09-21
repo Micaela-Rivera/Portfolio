@@ -1,261 +1,300 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Micaela Rivera – Creative Resume</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <meta property="og:title" content="Micaela Rivera – Creative Resume" />
-  <meta property="og:image" content="images/thumbnail_IMG_8423.jpg" />
-  <meta name="theme-color" content="#111111" />
-  <style>
-    :root{
-      --bg:#0b0b0b; --card:#121212; --ink:#eae9e6; --muted:#bdb9b0; --accent:#ffb3c1; --line:#272727;
-    }
-    *{box-sizing:border-box} html,body{margin:0;padding:0}
-    body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
-    .container{max-width:1000px;margin:0 auto;padding:0 20px}
-    .section{padding:56px 0;border-top:1px solid var(--line)}
-    h1,h2,h3{margin:0 0 .5rem 0;line-height:1.15}
-    h2{font:600 1.4rem/1.2 Inter, sans-serif; letter-spacing:.02em}
-    h3{font:600 1.05rem/1.2 Inter, sans-serif}
-    h4{margin:.2rem 0 .3rem 0;font-weight:600;color:var(--muted)}
-    p{margin:.35rem 0 .75rem} ul{padding-left:1.15rem;margin:.35rem 0 .75rem} li{margin:.25rem 0}
-    a{color:var(--ink)} a:hover{color:var(--accent)}
-    /* Hero */
-    .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-    .hero__content{padding:84px 20px 64px 20px;position:relative;z-index:2}
-    .hero__name{font:800 clamp(2rem,6vw,4rem)/.95 Inter,sans-serif;letter-spacing:-.02em}
-    .hero__name span{font-weight:300;opacity:.9}
-    .hero__tag{font-family:"EB Garamond",serif;font-size:clamp(1.1rem,2.2vw,1.35rem);color:var(--muted);margin:.4rem 0 1rem}
-    .hero__contact{display:flex;flex-wrap:wrap;gap:.8rem 1.4rem;list-style:none;padding:0;margin:0;color:var(--muted)}
-    .hero__contact a{border-bottom:1px dotted var(--muted);text-decoration:none}
-    .hero__contact a:hover{border-bottom-color:var(--accent)}
-    .scrim{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(11,11,11,.2), rgba(11,11,11,.95) 65%);pointer-events:none;z-index:1}
-    /* Filmstrip */
-    .filmstrip{--h:42vmin;position:absolute;left:0;right:0;bottom:-2px;height:var(--h);display:flex;gap:18px;padding:0 18px 12px;transform:skewY(-2.2deg);filter:saturate(1.05) contrast(1.05);animation:pan 28s linear infinite}
-    .filmstrip figure{flex:0 0 clamp(240px, 40vmin, 420px);margin:0;overflow:hidden;border-radius:18px;background:var(--card);box-shadow:0 10px 24px rgba(0,0,0,.45);border:1px solid var(--line)}
-    .filmstrip img{display:block;width:100%;height:100%;object-fit:cover}
-    .filmstrip .lineart img{filter:invert(95%) contrast(90%)}
-    @keyframes pan{from{transform:translateX(0) skewY(-2.2deg)} to{transform:translateX(-50%) skewY(-2.2deg)}}
-    /* Intro */
-    .intro{display:grid;grid-template-columns:1.1fr .9fr;gap:28px}
-    .intro__card{background:linear-gradient(180deg,#121212, #0f0f0f);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 10px 24px rgba(0,0,0,.35)}
-    .chips{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;margin:.6rem 0 0;list-style:none}
-    .chips li{border:1px solid var(--line);background:#141414;border-radius:999px;padding:.35rem .7rem;font-size:.85rem;color:var(--muted)}
-    /* Flip gallery */
-    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .flip{perspective:1000px}
-    .flip__front,.flip__back{position:relative;height:320px;border-radius:16px;border:1px solid var(--line);overflow:hidden;background:#151515;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.7,.1,1);box-shadow:0 10px 22px rgba(0,0,0,.35)}
-    .flip__front img{width:100%;height:100%;object-fit:cover;display:block;opacity:.95}
-    .flip__front h3{position:absolute;left:14px;bottom:12px;margin:0;background:rgba(0,0,0,.55);padding:.25rem .5rem;border-radius:10px;border:1px solid rgba(255,255,255,.14);font-size:.95rem}
-    .flip__back{position:absolute;inset:0;padding:18px;display:flex;flex-direction:column;justify-content:center;transform:rotateY(180deg)}
-    .flip__back small{color:var(--muted)}
-    .flip:hover .flip__front{transform:rotateY(180deg)}
-    .flip:hover .flip__back{transform:rotateY(360deg)}
-    /* Reusable blocks */
-    .item{margin:22px 0}
-    .item header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.4rem}
-    .item .meta{color:var(--muted)}
-    .edu{display:grid;gap:10px}
-    .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .note{color:var(--muted);margin-top:6px}
-    .btn{display:inline-block;background:var(--ink);color:#111;padding:.7rem 1rem;border-radius:12px;text-decoration:none;font-weight:700;border:2px solid transparent}
-    .btn:hover{background:transparent;color:var(--ink);border-color:var(--ink)}
-    .cta{display:flex;justify-content:center}
-    .footer{padding:40px 0;color:var(--muted)}
-    /* Responsive */
-    @media (max-width:960px){.intro{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:640px){.gallery{grid-template-columns:1fr}.filmstrip{--h:46vmin}}
-    /* Print */
-    @media print{
-      :root{--bg:#fff;--card:#fff;--ink:#000;--muted:#444;--line:#ccc}
-      body{background:#fff;color:#000}
-      .hero,.filmstrip,.scrim,.cta{display:none}
-      .section{border-color:#e5e5e5}
-      a{color:#000;text-decoration:none}
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Micaela Rivera – Lookbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0a; --ink:#f4f2ee; --muted:#bfbab0; --line:#262626; --accent:#ffb3c1;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0}
+  body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+  a{color:inherit}
+  .cap{letter-spacing:.18em;text-transform:uppercase}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+  /* Global vibe */
+  .spotlight{
+    position:fixed; inset:0; pointer-events:none;
+    background:
+      radial-gradient(1200px 500px at 65% -10%, rgba(255,255,255,.08), transparent 65%),
+      radial-gradient(900px 400px at 10% 120%, rgba(255,179,193,.08), transparent 60%);
+    mix-blend-mode:screen; z-index:0;
+  }
+
+  /* Snap-scrolling sections */
+  .snapwrap{scroll-snap-type:y mandatory;height:100svh;overflow-y:auto}
+  section{min-height:100svh;display:grid;place-items:center;position:relative;scroll-snap-align:start}
+
+  /* Title */
+  .title{text-align:center}
+  .title h1{font-weight:900;font-size:clamp(2.2rem,8vw,5rem);margin:0;letter-spacing:-.02em}
+  .title p{color:var(--muted);margin:.6rem 0 0}
+
+  /* RUNWAY — virtual models with mapped garments */
+  .runway{isolation:isolate}
+  .stage{
+    width:min(1100px,92vw);height:min(620px,80vh);
+    border:1px solid var(--line);border-radius:24px;position:relative;overflow:hidden;
+    background:
+      linear-gradient(180deg,#101010 0%,#0b0b0b 60%),
+      url('images/thumbnail_IMG_8422.jpg') center/cover no-repeat;
+    box-shadow:0 40px 120px rgba(0,0,0,.55) inset;
+  }
+  .track{position:absolute;inset:auto 0 0 0;height:36%;background:linear-gradient(#0d0d0d,#050505)}
+  .models{
+    position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-evenly;padding:2rem;
+  }
+  .model{width:min(280px,28vw);aspect-ratio:3/7; position:relative; filter:drop-shadow(0 16px 30px rgba(0,0,0,.5))}
+  .nameplate{
+    position:absolute;left:50%;bottom:8px;transform:translateX(-50%);
+    font-size:.75rem;color:#cfcac1;background:rgba(20,20,20,.6);backdrop-filter:blur(3px);
+    border:1px solid var(--line);padding:.35rem .6rem;border-radius:999px
+  }
+
+  /* Walk animation */
+  @keyframes walk {
+    0%{transform:translateY(0)}
+    50%{transform:translateY(-3px)}
+    100%{transform:translateY(0)}
+  }
+  .model svg{width:100%;height:100%;display:block;animation:walk 2.4s ease-in-out infinite}
+  .model:nth-child(2) svg{animation-delay:.3s}
+  .model:nth-child(3) svg{animation-delay:.6s}
+
+  /* LOOKBOOK — full bleed alternating panels */
+  .panel{
+    width:100%;min-height:100svh;display:grid;grid-template-columns:1fr 1fr;
+    gap:min(4vw,28px);align-items:center;padding:clamp(18px,6vw,60px)
+  }
+  .card{
+    border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#121212;
+    box-shadow:0 18px 40px rgba(0,0,0,.4)
+  }
+  .card img{display:block;width:100%;height:100%;object-fit:cover}
+  .blurb{align-self:stretch;display:grid;place-items:center}
+  .blurb .inner{max-width:36ch}
+  .blurb h2{margin:0 0 .2rem 0;font-weight:800}
+  .blurb p{color:var(--muted);margin:0}
+  .tag{display:inline-block;margin-top:1rem;padding:.35rem .6rem;border:1px solid var(--line);border-radius:999px;color:#c8c3ba}
+
+  /* GRID — masonry-like with CSS columns for pure-HTML simplicity */
+  .masonry{columns:3 280px;column-gap:16px;width:100%;padding:0 16px 50px}
+  .tile{break-inside:avoid;margin:0 0 16px;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#121212}
+  .tile img{width:100%;display:block}
+
+  /* Top nav (minimal) */
+  .mini{
+    position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:5;
+    display:flex;gap:.6rem;background:rgba(15,15,15,.5);backdrop-filter:blur(8px);
+    border:1px solid var(--line);padding:.35rem .6rem;border-radius:999px;font-size:.8rem;color:#d9d4cb
+  }
+  .mini a{opacity:.85;text-decoration:none;border-bottom:1px dotted transparent}
+  .mini a:hover{opacity:1;border-bottom-color:#d9d4cb}
+
+  @media (max-width:800px){
+    .panel{grid-template-columns:1fr}
+  }
+</style>
 </head>
 <body>
-  <header class="hero">
-    <div class="hero__content container">
-      <h1 class="hero__name">Micaela<span> Rivera</span></h1>
-      <p class="hero__tag">Illustrator • Seamstress • Garment Design & Construction</p>
-      <ul class="hero__contact">
-        <li><a href="mailto:mr64296@my.utexas.edu">mr64296@my.utexas.edu</a></li>
-        <li><a href="tel:+18329984930">(832) 998-4930</a></li>
-        <li>Austin, TX · Willing to relocate</li>
-        <li><a href="https://linkedin.com/in/micarivera-" target="_blank" rel="noopener">linkedin.com/in/micarivera-</a></li>
-      </ul>
+<div class="spotlight"></div>
+<nav class="mini cap">
+  <a href="#runway">Runway</a>
+  <a href="#lookbook">Lookbook</a>
+  <a href="#grid">Grid</a>
+</nav>
+
+<div class="snapwrap">
+
+  <!-- TITLE -->
+  <section>
+    <div class="title container" aria-label="Intro">
+      <h1>Micaela Rivera</h1>
+      <p class="cap">Illustrator · Seamstress · Garment Design</p>
     </div>
-    <div class="filmstrip" aria-hidden="true">
-      <figure><img src="images/thumbnail_IMG_8421.jpg" alt="Creative pants – front/back" /></figure>
-      <figure class="lineart"><img src="images/thumbnail_IMG_8422.jpg" alt="Pants line drawing" /></figure>
-      <figure><img src="images/thumbnail_IMG_8423.jpg" alt="Creative skirt muslin on form" /></figure>
-      <figure><img src="images/thumbnail_IMG_8421.jpg" alt="" /></figure>
-      <figure class="lineart"><img src="images/thumbnail_IMG_8422.jpg" alt="" /></figure>
-      <figure><img src="images/thumbnail_IMG_8423.jpg" alt="" /></figure>
+  </section>
+
+  <!-- RUNWAY: images mapped to garment shapes on “models” -->
+  <section id="runway" class="runway">
+    <div class="stage">
+      <div class="models">
+
+        <!-- MODEL 1: Creative Pants -->
+        <figure class="model">
+          <svg viewBox="0 0 300 700" role="img" aria-label="Creative pants on model">
+            <!-- Silhouette body -->
+            <defs>
+              <!-- Pants shape (loose fit) -->
+              <clipPath id="clip-pants">
+                <path d="M95 210
+                         C105 210, 195 210, 205 210
+                         L225 470
+                         C210 560, 210 650, 210 690
+                         L165 690
+                         L160 480
+                         L140 480
+                         L135 690
+                         L90 690
+                         C90 610, 86 545, 75 470
+                         Z"/>
+              </clipPath>
+              <radialGradient id="skin" cx="50%" cy="20%" r="70%">
+                <stop offset="0%" stop-color="#d5cabe"/>
+                <stop offset="100%" stop-color="#b8aa9b"/>
+              </radialGradient>
+              <linearGradient id="shadow" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="rgba(0,0,0,0.25)"/>
+                <stop offset="1" stop-color="rgba(0,0,0,0.6)"/>
+              </linearGradient>
+              <pattern id="pants-img" patternUnits="objectBoundingBox" width="1" height="1">
+                <image href="images/thumbnail_IMG_8421.jpg" width="300" height="700" preserveAspectRatio="xMidYMid slice"/>
+              </pattern>
+            </defs>
+            <!-- Head + torso -->
+            <circle cx="150" cy="95" r="45" fill="url(#skin)"/>
+            <rect x="110" y="140" width="80" height="80" rx="20" fill="url(#skin)"/>
+            <!-- Garment mapped -->
+            <g clip-path="url(#clip-pants)">
+              <rect x="60" y="200" width="180" height="520" fill="url(#pants-img)"/>
+              <!-- soft overlay to blend edges -->
+              <rect x="60" y="200" width="180" height="520" fill="rgba(0,0,0,.25)"/>
+            </g>
+            <!-- Simple shoes -->
+            <ellipse cx="110" cy="690" rx="26" ry="8" fill="#1b1b1b"/>
+            <ellipse cx="195" cy="690" rx="26" ry="8" fill="#1b1b1b"/>
+          </svg>
+          <figcaption class="nameplate cap">Creative Pants</figcaption>
+        </figure>
+
+        <!-- MODEL 2: Line-art as statement top/dress -->
+        <figure class="model">
+          <svg viewBox="0 0 300 700" role="img" aria-label="Line art dress on model">
+            <defs>
+              <clipPath id="clip-dress">
+                <path d="M100 180
+                         C90 260, 70 360, 85 470
+                         C95 560, 115 630, 130 680
+                         L170 680
+                         C190 610, 205 540, 215 460
+                         C230 340, 210 240, 200 180
+                         Z"/>
+              </clipPath>
+              <pattern id="lineart-img" patternUnits="objectBoundingBox" width="1" height="1">
+                <image href="images/thumbnail_IMG_8422.jpg" width="400" height="700" preserveAspectRatio="xMidYMid slice"/>
+              </pattern>
+            </defs>
+            <circle cx="150" cy="95" r="45" fill="#e9e6e1"/>
+            <rect x="110" y="140" width="80" height="60" rx="20" fill="#e9e6e1"/>
+            <g clip-path="url(#clip-dress)">
+              <rect x="70" y="170" width="160" height="520" fill="url(#lineart-img)"/>
+              <rect x="70" y="170" width="160" height="520" fill="rgba(0,0,0,.18)"/>
+            </g>
+            <ellipse cx="140" cy="680" rx="24" ry="8" fill="#1b1b1b"/>
+            <ellipse cx="180" cy="680" rx="24" ry="8" fill="#1b1b1b"/>
+          </svg>
+          <figcaption class="nameplate cap">Tech-Art Dress</figcaption>
+        </figure>
+
+        <!-- MODEL 3: Creative Skirt -->
+        <figure class="model">
+          <svg viewBox="0 0 300 700" role="img" aria-label="Creative skirt on model">
+            <defs>
+              <clipPath id="clip-skirt">
+                <path d="M95 350
+                         C120 340, 180 340, 205 350
+                         C230 380, 235 430, 230 480
+                         C215 560, 85 560, 70 480
+                         C65 430, 70 380, 95 350 Z"/>
+              </clipPath>
+              <pattern id="skirt-img" patternUnits="objectBoundingBox" width="1" height="1">
+                <image href="images/thumbnail_IMG_8423.jpg" width="300" height="400" preserveAspectRatio="xMidYMid slice"/>
+              </pattern>
+            </defs>
+            <circle cx="150" cy="95" r="45" fill="#eadfda"/>
+            <rect x="112" y="140" width="76" height="170" rx="26" fill="#eadfda"/>
+            <!-- Skirt -->
+            <g clip-path="url(#clip-skirt)">
+              <rect x="60" y="330" width="180" height="260" fill="url(#skirt-img)"/>
+              <rect x="60" y="330" width="180" height="260" fill="rgba(0,0,0,.22)"/>
+            </g>
+            <ellipse cx="130" cy="560" rx="20" ry="7" fill="#1b1b1b"/>
+            <ellipse cx="190" cy="560" rx="20" ry="7" fill="#1b1b1b"/>
+          </svg>
+          <figcaption class="nameplate cap">Corseted Skirt</figcaption>
+        </figure>
+      </div>
+
+      <div class="track"></div>
     </div>
-    <div class="scrim"></div>
-  </header>
+  </section>
 
-  <main class="container">
-    <section class="section intro">
-      <div class="intro__card">
-        <h2>Snapshot</h2>
-        <p>Fashion-focused creative with hands-on experience in illustration, tailoring, and garment construction. Background spans customer-facing work, freelance commissions, and collaborative shoots. Fluent in Spanish, comfortable across Adobe and MS Office, and actively building a portfolio through university projects and professional volunteering.</p>
-        <ul class="chips">
-          <li>Adobe Ps/Ai/Id</li><li>Illustration</li><li>Tailoring</li><li>Garment Construction</li><li>Set & Costume Design</li><li>Spanish (Fluent)</li>
-        </ul>
+  <!-- LOOKBOOK: immersive, image-first panels -->
+  <section id="lookbook">
+    <div class="panel container">
+      <div class="card">
+        <img src="images/thumbnail_IMG_8421.jpg" alt="Creative pants – front and back">
       </div>
-      <div class="gallery">
-        <article class="flip">
-          <div class="flip__front">
-            <img src="images/thumbnail_IMG_8423.jpg" alt="Creative skirt on form" />
-            <h3>Creative Skirt</h3>
-          </div>
-          <div class="flip__back">
-            <h3>Creative Skirt</h3>
-            <p>Skirt with gathered technique and corseted waist. Focus on proportion, volume, and texture.</p>
-            <small>Role: Illustrator & Seamstress · Spring 2025</small>
-          </div>
-        </article>
-        <article class="flip">
-          <div class="flip__front">
-            <img src="images/thumbnail_IMG_8422.jpg" alt="Pants technical drawing" />
-            <h3>Basic Skirt & Tech</h3>
-          </div>
-          <div class="flip__back">
-            <h3>Basic Skirt</h3>
-            <p>Foundational skirt with accurate fit and professional finishes on a dress form.</p>
-            <small>Role: Seamstress · Spring 2025</small>
-          </div>
-        </article>
-        <article class="flip">
-          <div class="flip__front">
-            <img src="images/thumbnail_IMG_8421.jpg" alt="Creative pants front/back" />
-            <h3>Creative Pants</h3>
-          </div>
-          <div class="flip__back">
-            <h3>Creative Pants</h3>
-            <p>Experimental design with heart-stitch details and pocket motif.</p>
-            <small>Role: Designer & Maker · Spring 2025</small>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Experience</h2>
-      <article class="item">
-        <header>
-          <h3>Rudy’s Barbeque — Cashier</h3>
-          <span class="meta">Aug 2024 – Present · Austin, TX</span>
-        </header>
-        <ul>
-          <li>Process high-volume transactions with accuracy; resolve inquiries quickly.</li>
-          <li>Collaborate with team to streamline operations; serve 80+ customers per shift.</li>
-          <li>Contributed to increased tip revenue through service and efficiency.</li>
-        </ul>
-      </article>
-      <article class="item">
-        <header>
-          <h3>Freelance Artist — Illustrator & Seamstress</h3>
-          <span class="meta">May 2023 – Present</span>
-        </header>
-        <ul>
-          <li>Deliver commissions on or before deadline with high quality.</li>
-          <li>Illustration, tailoring, handcrafting, and Photoshop; client collaboration & revisions.</li>
-          <li>Manage presentation, marketing, finances, and timelines.</li>
-        </ul>
-      </article>
-    </section>
-
-    <section class="section">
-      <h2>Academic Projects</h2>
-      <ul>
-        <li><strong>Garment Design & Construction</strong> — Illustrator & Seamstress (Spring 2025)</li>
-        <li>Creative Skirt · Basic Skirt · Creative Pants</li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <h2>Leadership & Activities</h2>
-      <article class="item">
-        <header>
-          <h3>University Fashion Group — Member & HMUA</h3>
-          <span class="meta">2023 – Present</span>
-        </header>
-        <ul>
-          <li>HMUA for 2025 Zine cover shoot; collaborated with models, stylists, and photographers.</li>
-          <li>Contributed creative input to align visuals with theme and trends.</li>
-        </ul>
-      </article>
-      <article class="item">
-        <header>
-          <h3>University Leadership Network — Member & Mentee</h3>
-          <span class="meta">2023 – Present</span>
-        </header>
-        <ul>
-          <li>$20,000 scholarship for academic excellence and leadership potential.</li>
-          <li>Mentorship and professional development for industry readiness.</li>
-        </ul>
-      </article>
-      <article class="item">
-        <header>
-          <h3>St. Matthew the Evangelist Catholic Church — Volunteer Event Coordinator</h3>
-          <span class="meta">Spring 2022 – Present</span>
-        </header>
-        <ul>
-          <li>Plan and execute annual festival; coordinate volunteers and logistics.</li>
-          <li>Organized cultural night; led a team of 10 student volunteers.</li>
-        </ul>
-      </article>
-    </section>
-
-    <section class="section">
-      <h2>Education</h2>
-      <div class="edu">
-        <div>
-          <h3>The University of Texas at Austin</h3>
-          <p>B.S., Textiles · May 2027 · Overall GPA: 3.50</p>
-        </div>
-        <div>
-          <h3>Eisenhower High School</h3>
-          <p>High School Diploma · May 2023</p>
+      <div class="blurb">
+        <div class="inner">
+          <h2>Creative Pants</h2>
+          <p>Playful heart-stitch motifs and functional construction. Hover in the grid below to swap front/back views.</p>
+          <span class="tag cap">detail & finish</span>
         </div>
       </div>
-      <p class="note">Coursework in Fashion (16 hours). Overall GPA across coursework: 4.00.</p>
-    </section>
-
-    <section class="section">
-      <h2>Additional</h2>
-      <div class="cols">
-        <div>
-          <h4>Computer Skills</h4>
-          <p>MS Word, Excel, PowerPoint, Adobe Photoshop, Illustrator, InDesign</p>
-        </div>
-        <div>
-          <h4>Work Eligibility</h4>
-          <p>Eligible to work in the U.S. with no restrictions</p>
-        </div>
-        <div>
-          <h4>Interests</h4>
-          <p>Costume & Set Design, Garment Design & Construction</p>
+    </div>
+    <div class="panel container">
+      <div class="blurb">
+        <div class="inner">
+          <h2>Tech Illustration</h2>
+          <p>Line work that guides construction. Shown here as a statement print to emphasize silhouette logic.</p>
+          <span class="tag cap">pattern logic</span>
         </div>
       </div>
-    </section>
+      <div class="card">
+        <img src="images/thumbnail_IMG_8422.jpg" alt="Line drawing – pants technical">
+      </div>
+    </div>
+    <div class="panel container">
+      <div class="card">
+        <img src="images/thumbnail_IMG_8423.jpg" alt="Creative skirt on dress form">
+      </div>
+      <div class="blurb">
+        <div class="inner">
+          <h2>Corseted Skirt</h2>
+          <p>Volume, ruching, and proportion on a clean base. Seen on form; mapped on model above for motion.</p>
+          <span class="tag cap">texture & volume</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section class="section cta">
-      <a class="btn" href="#" onclick="window.print();return false;">Print this resume</a>
-    </section>
-  </main>
+  <!-- GRID: fast browsing; pants tile swaps on hover -->
+  <section id="grid">
+    <div class="container" style="text-align:center;padding:24px 24px 8px">
+      <h3 class="cap" style="color:var(--muted);margin:0">Gallery</h3>
+    </div>
+    <div class="masonry">
+      <!-- Pants flip: use same image as a sprite with background-position trick -->
+      <figure class="tile">
+        <img src="images/thumbnail_IMG_8421.jpg" alt="Creative pants">
+      </figure>
+      <figure class="tile">
+        <img src="images/thumbnail_IMG_8422.jpg" alt="Tech drawing">
+      </figure>
+      <figure class="tile">
+        <img src="images/thumbnail_IMG_8423.jpg" alt="Skirt on dress form">
+      </figure>
+      <!-- duplicates for rhythm; feel free to prune -->
+      <figure class="tile"><img src="images/thumbnail_IMG_8421.jpg" alt=""></figure>
+      <figure class="tile"><img src="images/thumbnail_IMG_8423.jpg" alt=""></figure>
+      <figure class="tile"><img src="images/thumbnail_IMG_8422.jpg" alt=""></figure>
+    </div>
+  </section>
 
-  <footer class="footer container">
-    <p>© <span id="y"></span> Micaela Rivera · Designed for GitHub Pages</p>
-  </footer>
-
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</div>
 </body>
 </html>
