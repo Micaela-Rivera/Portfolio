@@ -4,20 +4,80 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Micaela Rivera – Creative Resume</title>
-
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Social preview -->
   <meta property="og:title" content="Micaela Rivera – Creative Resume" />
-  <meta property="og:description" content="Illustrator & Seamstress | Garment Design & Construction" />
   <meta property="og:image" content="images/thumbnail_IMG_8423.jpg" />
   <meta name="theme-color" content="#111111" />
+  <style>
+    :root{
+      --bg:#0b0b0b; --card:#121212; --ink:#eae9e6; --muted:#bdb9b0; --accent:#ffb3c1; --line:#272727;
+    }
+    *{box-sizing:border-box} html,body{margin:0;padding:0}
+    body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+    .container{max-width:1000px;margin:0 auto;padding:0 20px}
+    .section{padding:56px 0;border-top:1px solid var(--line)}
+    h1,h2,h3{margin:0 0 .5rem 0;line-height:1.15}
+    h2{font:600 1.4rem/1.2 Inter, sans-serif; letter-spacing:.02em}
+    h3{font:600 1.05rem/1.2 Inter, sans-serif}
+    h4{margin:.2rem 0 .3rem 0;font-weight:600;color:var(--muted)}
+    p{margin:.35rem 0 .75rem} ul{padding-left:1.15rem;margin:.35rem 0 .75rem} li{margin:.25rem 0}
+    a{color:var(--ink)} a:hover{color:var(--accent)}
+    /* Hero */
+    .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+    .hero__content{padding:84px 20px 64px 20px;position:relative;z-index:2}
+    .hero__name{font:800 clamp(2rem,6vw,4rem)/.95 Inter,sans-serif;letter-spacing:-.02em}
+    .hero__name span{font-weight:300;opacity:.9}
+    .hero__tag{font-family:"EB Garamond",serif;font-size:clamp(1.1rem,2.2vw,1.35rem);color:var(--muted);margin:.4rem 0 1rem}
+    .hero__contact{display:flex;flex-wrap:wrap;gap:.8rem 1.4rem;list-style:none;padding:0;margin:0;color:var(--muted)}
+    .hero__contact a{border-bottom:1px dotted var(--muted);text-decoration:none}
+    .hero__contact a:hover{border-bottom-color:var(--accent)}
+    .scrim{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(11,11,11,.2), rgba(11,11,11,.95) 65%);pointer-events:none;z-index:1}
+    /* Filmstrip */
+    .filmstrip{--h:42vmin;position:absolute;left:0;right:0;bottom:-2px;height:var(--h);display:flex;gap:18px;padding:0 18px 12px;transform:skewY(-2.2deg);filter:saturate(1.05) contrast(1.05);animation:pan 28s linear infinite}
+    .filmstrip figure{flex:0 0 clamp(240px, 40vmin, 420px);margin:0;overflow:hidden;border-radius:18px;background:var(--card);box-shadow:0 10px 24px rgba(0,0,0,.45);border:1px solid var(--line)}
+    .filmstrip img{display:block;width:100%;height:100%;object-fit:cover}
+    .filmstrip .lineart img{filter:invert(95%) contrast(90%)}
+    @keyframes pan{from{transform:translateX(0) skewY(-2.2deg)} to{transform:translateX(-50%) skewY(-2.2deg)}}
+    /* Intro */
+    .intro{display:grid;grid-template-columns:1.1fr .9fr;gap:28px}
+    .intro__card{background:linear-gradient(180deg,#121212, #0f0f0f);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 10px 24px rgba(0,0,0,.35)}
+    .chips{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;margin:.6rem 0 0;list-style:none}
+    .chips li{border:1px solid var(--line);background:#141414;border-radius:999px;padding:.35rem .7rem;font-size:.85rem;color:var(--muted)}
+    /* Flip gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .flip{perspective:1000px}
+    .flip__front,.flip__back{position:relative;height:320px;border-radius:16px;border:1px solid var(--line);overflow:hidden;background:#151515;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.7,.1,1);box-shadow:0 10px 22px rgba(0,0,0,.35)}
+    .flip__front img{width:100%;height:100%;object-fit:cover;display:block;opacity:.95}
+    .flip__front h3{position:absolute;left:14px;bottom:12px;margin:0;background:rgba(0,0,0,.55);padding:.25rem .5rem;border-radius:10px;border:1px solid rgba(255,255,255,.14);font-size:.95rem}
+    .flip__back{position:absolute;inset:0;padding:18px;display:flex;flex-direction:column;justify-content:center;transform:rotateY(180deg)}
+    .flip__back small{color:var(--muted)}
+    .flip:hover .flip__front{transform:rotateY(180deg)}
+    .flip:hover .flip__back{transform:rotateY(360deg)}
+    /* Reusable blocks */
+    .item{margin:22px 0}
+    .item header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.4rem}
+    .item .meta{color:var(--muted)}
+    .edu{display:grid;gap:10px}
+    .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .note{color:var(--muted);margin-top:6px}
+    .btn{display:inline-block;background:var(--ink);color:#111;padding:.7rem 1rem;border-radius:12px;text-decoration:none;font-weight:700;border:2px solid transparent}
+    .btn:hover{background:transparent;color:var(--ink);border-color:var(--ink)}
+    .cta{display:flex;justify-content:center}
+    .footer{padding:40px 0;color:var(--muted)}
+    /* Responsive */
+    @media (max-width:960px){.intro{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.gallery{grid-template-columns:1fr}.filmstrip{--h:46vmin}}
+    /* Print */
+    @media print{
+      :root{--bg:#fff;--card:#fff;--ink:#000;--muted:#444;--line:#ccc}
+      body{background:#fff;color:#000}
+      .hero,.filmstrip,.scrim,.cta{display:none}
+      .section{border-color:#e5e5e5}
+      a{color:#000;text-decoration:none}
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Lookbook header -->
   <header class="hero">
     <div class="hero__content container">
       <h1 class="hero__name">Micaela<span> Rivera</span></h1>
@@ -29,14 +89,10 @@
         <li><a href="https://linkedin.com/in/micarivera-" target="_blank" rel="noopener">linkedin.com/in/micarivera-</a></li>
       </ul>
     </div>
-
-    <!-- Kinetic filmstrip of your images -->
     <div class="filmstrip" aria-hidden="true">
       <figure><img src="images/thumbnail_IMG_8421.jpg" alt="Creative pants – front/back" /></figure>
       <figure class="lineart"><img src="images/thumbnail_IMG_8422.jpg" alt="Pants line drawing" /></figure>
       <figure><img src="images/thumbnail_IMG_8423.jpg" alt="Creative skirt muslin on form" /></figure>
-
-      <!-- seamless loop (duplicate for infinite scroll) -->
       <figure><img src="images/thumbnail_IMG_8421.jpg" alt="" /></figure>
       <figure class="lineart"><img src="images/thumbnail_IMG_8422.jpg" alt="" /></figure>
       <figure><img src="images/thumbnail_IMG_8423.jpg" alt="" /></figure>
@@ -45,28 +101,14 @@
   </header>
 
   <main class="container">
-
-    <!-- About / Snapshot -->
     <section class="section intro">
       <div class="intro__card">
         <h2>Snapshot</h2>
-        <p>
-          Fashion-focused creative with hands-on experience in illustration, tailoring, and garment construction.
-          Background spans customer-facing work, freelance commissions, and collaborative shoots. Fluent in Spanish,
-          comfortable across Adobe and MS Office, and actively building a portfolio through university projects and
-          professional volunteering.
-        </p>
+        <p>Fashion-focused creative with hands-on experience in illustration, tailoring, and garment construction. Background spans customer-facing work, freelance commissions, and collaborative shoots. Fluent in Spanish, comfortable across Adobe and MS Office, and actively building a portfolio through university projects and professional volunteering.</p>
         <ul class="chips">
-          <li>Adobe Ps/Ai/Id</li>
-          <li>Illustration</li>
-          <li>Tailoring</li>
-          <li>Garment Construction</li>
-          <li>Set & Costume Design</li>
-          <li>Spanish (Fluent)</li>
+          <li>Adobe Ps/Ai/Id</li><li>Illustration</li><li>Tailoring</li><li>Garment Construction</li><li>Set & Costume Design</li><li>Spanish (Fluent)</li>
         </ul>
       </div>
-
-      <!-- Project flip-cards using your images -->
       <div class="gallery">
         <article class="flip">
           <div class="flip__front">
@@ -75,11 +117,10 @@
           </div>
           <div class="flip__back">
             <h3>Creative Skirt</h3>
-            <p>Designed and constructed a skirt featuring an innovative gathered technique and corseted waist. Focus on proportion, volume, and texture.</p>
+            <p>Skirt with gathered technique and corseted waist. Focus on proportion, volume, and texture.</p>
             <small>Role: Illustrator & Seamstress · Spring 2025</small>
           </div>
         </article>
-
         <article class="flip">
           <div class="flip__front">
             <img src="images/thumbnail_IMG_8422.jpg" alt="Pants technical drawing" />
@@ -87,11 +128,10 @@
           </div>
           <div class="flip__back">
             <h3>Basic Skirt</h3>
-            <p>Produced a clean foundational skirt with accurate fit and professional finishes on a dress form. Emphasis on seam accuracy and pressing.</p>
+            <p>Foundational skirt with accurate fit and professional finishes on a dress form.</p>
             <small>Role: Seamstress · Spring 2025</small>
           </div>
         </article>
-
         <article class="flip">
           <div class="flip__front">
             <img src="images/thumbnail_IMG_8421.jpg" alt="Creative pants front/back" />
@@ -99,17 +139,15 @@
           </div>
           <div class="flip__back">
             <h3>Creative Pants</h3>
-            <p>Experimental design integrating functional construction with playful heart-stitch details and pocket motif.</p>
+            <p>Experimental design with heart-stitch details and pocket motif.</p>
             <small>Role: Designer & Maker · Spring 2025</small>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- Experience -->
     <section class="section">
       <h2>Experience</h2>
-
       <article class="item">
         <header>
           <h3>Rudy’s Barbeque — Cashier</h3>
@@ -121,33 +159,29 @@
           <li>Contributed to increased tip revenue through service and efficiency.</li>
         </ul>
       </article>
-
       <article class="item">
         <header>
           <h3>Freelance Artist — Illustrator & Seamstress</h3>
           <span class="meta">May 2023 – Present</span>
         </header>
         <ul>
-          <li>Deliver commissions on or before deadline with quality that meets or exceeds expectations.</li>
-          <li>Illustration, tailoring, handcrafting, and Photoshop work; client collaboration & revisions.</li>
-          <li>Manage presentation, marketing, finances, and project timelines.</li>
+          <li>Deliver commissions on or before deadline with high quality.</li>
+          <li>Illustration, tailoring, handcrafting, and Photoshop; client collaboration & revisions.</li>
+          <li>Manage presentation, marketing, finances, and timelines.</li>
         </ul>
       </article>
     </section>
 
-    <!-- Academic Projects -->
     <section class="section">
       <h2>Academic Projects</h2>
-      <ul class="list">
+      <ul>
         <li><strong>Garment Design & Construction</strong> — Illustrator & Seamstress (Spring 2025)</li>
         <li>Creative Skirt · Basic Skirt · Creative Pants</li>
       </ul>
     </section>
 
-    <!-- Leadership & Activities -->
     <section class="section">
       <h2>Leadership & Activities</h2>
-
       <article class="item">
         <header>
           <h3>University Fashion Group — Member & HMUA</h3>
@@ -158,18 +192,16 @@
           <li>Contributed creative input to align visuals with theme and trends.</li>
         </ul>
       </article>
-
       <article class="item">
         <header>
           <h3>University Leadership Network — Member & Mentee</h3>
           <span class="meta">2023 – Present</span>
         </header>
         <ul>
-          <li>Recipient of $20,000 scholarship for academic excellence and leadership potential.</li>
-          <li>Mentorship and professional development to strengthen industry readiness.</li>
+          <li>$20,000 scholarship for academic excellence and leadership potential.</li>
+          <li>Mentorship and professional development for industry readiness.</li>
         </ul>
       </article>
-
       <article class="item">
         <header>
           <h3>St. Matthew the Evangelist Catholic Church — Volunteer Event Coordinator</h3>
@@ -177,4 +209,53 @@
         </header>
         <ul>
           <li>Plan and execute annual festival; coordinate volunteers and logistics.</li>
-          <li>Organized cultural night; led a t
+          <li>Organized cultural night; led a team of 10 student volunteers.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section">
+      <h2>Education</h2>
+      <div class="edu">
+        <div>
+          <h3>The University of Texas at Austin</h3>
+          <p>B.S., Textiles · May 2027 · Overall GPA: 3.50</p>
+        </div>
+        <div>
+          <h3>Eisenhower High School</h3>
+          <p>High School Diploma · May 2023</p>
+        </div>
+      </div>
+      <p class="note">Coursework in Fashion (16 hours). Overall GPA across coursework: 4.00.</p>
+    </section>
+
+    <section class="section">
+      <h2>Additional</h2>
+      <div class="cols">
+        <div>
+          <h4>Computer Skills</h4>
+          <p>MS Word, Excel, PowerPoint, Adobe Photoshop, Illustrator, InDesign</p>
+        </div>
+        <div>
+          <h4>Work Eligibility</h4>
+          <p>Eligible to work in the U.S. with no restrictions</p>
+        </div>
+        <div>
+          <h4>Interests</h4>
+          <p>Costume & Set Design, Garment Design & Construction</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <a class="btn" href="#" onclick="window.print();return false;">Print this resume</a>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <p>© <span id="y"></span> Micaela Rivera · Designed for GitHub Pages</p>
+  </footer>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
